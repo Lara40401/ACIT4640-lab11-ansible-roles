@@ -1,0 +1,11 @@
+- name: Setup Redis Server
+  hosts: server_role_redis_server
+  become: true
+  roles:
+    - server_role_redis_server
+
+- name: Setup Frontend Server
+  hosts: server_role_frontend_server
+  become: true
+  roles:
+    - server_role_frontend_server
