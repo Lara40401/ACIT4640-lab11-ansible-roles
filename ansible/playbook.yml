@@ -1,11 +1,18 @@
 - name: Setup Redis Server
   hosts: server_role_redis_server
   become: true
+  vars:
+    ansible_user: rocky
+    ansible_ssh_private_key_file: /home/laraa/.ssh/aws
+
   roles:
-    - server_role_redis_server
+    - redis
 
 - name: Setup Frontend Server
   hosts: server_role_frontend_server
   become: true
   roles:
-    - server_role_frontend_server
+    - frontend
+  vars:
+    ansible_user: ubuntu
+    ansible_ssh_private_key_file: /home/laraa/.ssh/aws
